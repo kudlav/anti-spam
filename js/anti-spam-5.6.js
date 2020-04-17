@@ -1,7 +1,5 @@
 /*
-Anti-spam plugin
-No spam in comments. No captcha.
-wordpress.org/plugins/anti-spam/
+Anti-spam Reloaded plugin
 */
 
 "use strict";
@@ -31,7 +29,7 @@ wordpress.org/plugins/anti-spam/
 		for (i = 0; i < len; i++) { // set answer into other input instead of user
 			elements[i].value = answer;
 		}
-		
+
 		// clear value of the empty input because some themes are adding some value for all inputs
 		elements = document.querySelectorAll('.antispam-control-e');
 		len = elements.length;

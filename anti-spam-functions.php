@@ -1,4 +1,7 @@
 <?php
+/*
+Anti-spam Reloaded plugin
+*/
 
 if ( ! defined( 'ABSPATH' ) ) { // Avoid direct calls to this file and prevent full path disclosure
 	exit;
@@ -33,22 +36,22 @@ function antispam_counter_stats() {
 
 function antispam_check_for_spam() {
 	$spam_flag = false;
-		
+
 	$antspm_q = '';
 	if (isset($_POST['antspm-q'])) {
 		$antspm_q = trim($_POST['antspm-q']);
 	}
-	
+
 	$antspm_d = '';
 	if (isset($_POST['antspm-d'])) {
 		$antspm_d = trim($_POST['antspm-d']);
 	}
-	
+
 	$antspm_e = '';
 	if (isset($_POST['antspm-e-email-url-website'])) {
 		$antspm_e = trim($_POST['antspm-e-email-url-website']);
 	}
-	
+
 	if ( $antspm_q != date('Y') ) { // year-answer is wrong - it is spam
 		if ( $antspm_d != date('Y') ) { // extra js-only check: there is no js added input - it is spam
 			$spam_flag = true;
@@ -58,7 +61,7 @@ function antispam_check_for_spam() {
 	if ( ! empty($antspm_e)) { // trap field is not empty - it is spam
 		$spam_flag = true;
 	}
-	
+
 	return $spam_flag;
 }
 
@@ -130,6 +133,6 @@ function antispam_store_comment($commentdata) {
 			return false;
 		}
 	}
-	
+
 	wp_set_comment_status( $comment_ID, 'spam' );
 }
