@@ -7,58 +7,42 @@ if ( ! defined( 'ABSPATH' ) ) { // Avoid direct calls to this file and prevent f
 	exit;
 }
 
-function antispam_default_settings() {
-	$settings = array(
+
+function antispamrel_get_settings() {
+	$default_settings = array(
 		'save_spam_comments' => 0
 	);
-	return $settings;
+	$antispam_settings = (array) get_option('antispamrel_settings');
+
+	return array_merge($default_settings, $antispam_settings); // set empty options with default values;
 }
 
 
-function antispam_get_settings() {
-	$antispam_settings = (array) get_option('antispam_settings');
-	$default_settings = antispam_default_settings();
-	$antispam_settings = array_merge($default_settings, $antispam_settings); // set empty options with default values
-	return $antispam_settings;
-}
-
-
-function antispam_counter_stats() {
-	$antispam_stats = get_option('antispam_stats', array());
+function antispamrel_counter_stats() {
+	$antispam_stats = get_option('antispamrel_stats', array());
 	if (array_key_exists('blocked_total', $antispam_stats)){
 		$antispam_stats['blocked_total']++;
 	} else {
 		$antispam_stats['blocked_total'] = 1;
 	}
-	update_option('antispam_stats', $antispam_stats);
+	update_option('antispamrel_stats', $antispam_stats);
 }
 
 
-function antispam_check_for_spam() {
+function antispamrel_check_for_spam() {
 	$spam_flag = false;
 
-	$antspm_q = '';
-	if (isset($_POST['antspm-q'])) {
-		$antspm_q = trim($_POST['antspm-q']);
-	}
+	$antspmrl_q = (isset($_POST['antspmrl-q'])) ? trim($_POST['antspmrl-q']) : ''; // Unsafe value
+	$antspmrl_d = (isset($_POST['antspmrl-d'])) ? trim($_POST['antspmrl-d']) : ''; // Unsafe value
+	$antspmrl_e = (isset($_POST['antspmrl-e-email-url-website'])) ? trim($_POST['antspmrl-e-email-url-website']) : ''; // Unsafe value
 
-	$antspm_d = '';
-	if (isset($_POST['antspm-d'])) {
-		$antspm_d = trim($_POST['antspm-d']);
-	}
-
-	$antspm_e = '';
-	if (isset($_POST['antspm-e-email-url-website'])) {
-		$antspm_e = trim($_POST['antspm-e-email-url-website']);
-	}
-
-	if ( $antspm_q != date('Y') ) { // year-answer is wrong - it is spam
-		if ( $antspm_d != date('Y') ) { // extra js-only check: there is no js added input - it is spam
+	if ( $antspmrl_q != date('Y') ) { // year-answer is wrong - it is spam
+		if ( $antspmrl_d != date('Y') ) { // extra js-only check: there is no js added input - it is spam
 			$spam_flag = true;
 		}
 	}
 
-	if ( ! empty($antspm_e)) { // trap field is not empty - it is spam
+	if ( ! empty($antspmrl_e)) { // trap field is not empty - it is spam
 		$spam_flag = true;
 	}
 
@@ -66,7 +50,7 @@ function antispam_check_for_spam() {
 }
 
 
-function antispam_store_comment($commentdata) {
+function antispamrel_store_comment($commentdata) {
 	global $wpdb;
 
 	if ( isset( $commentdata['user_ID'] ) ) {
