@@ -37,26 +37,30 @@ function antispamrel_display_screen_option() {
 		$user_id = get_current_user_id();
 		$antispam_info_visibility = get_user_meta($user_id, 'antispamrel_info_visibility', true);
 
-		if ($antispam_info_visibility == 1 OR $antispam_info_visibility == '') {
-			$checked = 'checked="checked"';
-		} else {
-			$checked = '';
-		}
+		$checked = checked(($antispam_info_visibility == 1 || $antispam_info_visibility == ''), true, false);
+		$nonce = esc_textarea(wp_create_nonce('antispamrel_info_nonce'));
 
 		?>
-		<script>
-			jQuery(function($){
-				$('.antispamrel_screen_options_group').insertAfter('#screen-options-wrap #adv-settings');
-			});
-		</script>
-		<form method="post" class="antispamrel_screen_options_group" style="padding-top:20px;">
-			<input type="hidden" name="antispamrel_option_submit" value="1" />
-			<label>
-				<input name="antispamrel_info_visibility" type="checkbox" value="1" <?php echo $checked; ?> />
-				Anti-spam Reloaded info
-			</label>
-			<input type="submit" class="button" value="<?php _e('Apply'); ?>" />
+		<form method="post" id="antispamrel_screen_options_group">
+			<fieldset>
+				<legend>Anti-spam Reloaded</legend>
+				<input type="hidden" name="antispamrel_info_nonce" value="<?php echo $nonce; ?>" />
+				<label>
+					<input name="antispamrel_info_visibility" type="checkbox" value="1" <?php echo $checked; ?> />
+					Show number of blocked comments
+				</label>
+				<input type="submit" class="button" value="<?php _e('Apply'); ?>" />
+			</fieldset>
 		</form>
+		<script>
+			document.onreadystatechange = function () {
+				if (document.readyState == "complete") {
+					const antspmrl_advsett = document.getElementById('screen-options-wrap');
+					const antspmrl_advopts = document.getElementById('antispamrel_screen_options_group');
+					antspmrl_advsett.appendChild(antspmrl_advopts);
+				}
+			}
+		</script>
 		<?php
 	}
 }
@@ -69,9 +73,11 @@ add_action('admin_head', 'antispamrel_register_screen_option');
 
 
 function antispamrel_update_screen_option() {
-	if (isset($_POST['antispamrel_option_submit']) AND $_POST['antispamrel_option_submit'] == 1) {
+	if (isset($_POST['antispamrel_info_nonce']) &&
+		wp_verify_nonce(sanitize_text_field($_POST['antispamrel_info_nonce']), 'antispamrel_info_nonce')
+	) {
 		$user_id = get_current_user_id();
-		if (isset($_POST['antispamrel_info_visibility']) AND $_POST['antispamrel_info_visibility'] == 1) {
+		if ( isset($_POST['antispamrel_info_visibility']) && $_POST['antispamrel_info_visibility'] == 1 ) {
 			update_user_meta($user_id, 'antispamrel_info_visibility', 1);
 		} else {
 			update_user_meta($user_id, 'antispamrel_info_visibility', 0);
