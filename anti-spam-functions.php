@@ -20,7 +20,7 @@ function antispamrel_get_settings() {
 
 function antispamrel_counter_stats() {
 	$antispam_stats = get_option('antispamrel_stats', array());
-	if (array_key_exists('blocked_total', $antispam_stats)){
+	if ( isset($antispam_stats['blocked_total']) ) {
 		$antispam_stats['blocked_total']++;
 	} else {
 		$antispam_stats['blocked_total'] = 1;
@@ -32,18 +32,14 @@ function antispamrel_counter_stats() {
 function antispamrel_check_for_spam() {
 	$spam_flag = false;
 
-	$antspmrl_q = (isset($_POST['antspmrl-q'])) ? trim($_POST['antspmrl-q']) : ''; // Unsafe value
-	$antspmrl_d = (isset($_POST['antspmrl-d'])) ? trim($_POST['antspmrl-d']) : ''; // Unsafe value
-	$antspmrl_e = (isset($_POST['antspmrl-e-email-url-website'])) ? trim($_POST['antspmrl-e-email-url-website']) : ''; // Unsafe value
-
-	if ( $antspmrl_q != date('Y') ) { // year-answer is wrong - it is spam
-		if ( $antspmrl_d != date('Y') ) { // extra js-only check: there is no js added input - it is spam
+	if ( !isset($_POST['antspmrl-q']) || trim($_POST['antspmrl-q']) != date('Y') ) { // year-answer is wrong - it is spam
+		if ( !isset($_POST['antspmrl-d']) || trim($_POST['antspmrl-d']) != date('Y') ) { // extra js-only check: there is no js added input - it is spam
 			$spam_flag = true;
 		}
 	}
 
-	if ( ! empty($antspmrl_e)) { // trap field is not empty - it is spam
-		$spam_flag = true;
+	if ( !isset($_POST['antspmrl-e-email-url-website']) || trim($_POST['antspmrl-e-email-url-website']) != '' ) {
+		$spam_flag = true; // trap field is not empty - it is spam
 	}
 
 	return $spam_flag;
