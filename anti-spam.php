@@ -14,8 +14,6 @@ if ( ! defined( 'ABSPATH' ) ) { // Avoid direct calls to this file and prevent f
 	exit;
 }
 
-define('ANTISPAMREL_PLUGIN_VERSION', '6.0');
-
 include('anti-spam-functions.php');
 include('anti-spam-settings.php');
 include('anti-spam-info.php');
@@ -33,11 +31,11 @@ add_action('wp_enqueue_scripts', 'antispamrel_enqueue_script');
 function antispamrel_form_part() {
 	if ( ! is_user_logged_in()) { // add anti-spam fields only for not logged in users
 		echo '
-			<!-- Anti-spam plugin v.', ANTISPAMREL_PLUGIN_VERSION, ' wordpress.org/plugins/anti-spam-reloaded/ -->
+			<!-- Anti-spam Reloaded plugin wordpress.org/plugins/anti-spam-reloaded/ -->
 			<p class="antispamrel-group" style="clear: both;">
 				<label>Current ye@r <span class="required">*</span></label>
 				<input type="hidden" name="antspmrl-a" class="antispamrel-control-a" value="', date('Y'), '" />
-				<input type="text" name="antspmrl-q" class="antispamrel-control-q" value="', ANTISPAMREL_PLUGIN_VERSION, '" autocomplete="off" />
+				<input type="text" name="antspmrl-q" class="antispamrel-control-q" value="', rand(0, 99), '" autocomplete="off" />
 			</p>
 			<p class="antispamrel-group" style="display: none;">
 				<label>Leave this field empty</label>
