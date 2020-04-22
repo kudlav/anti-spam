@@ -3,7 +3,7 @@ Contributors: kudlav, webvitaly
 Tags: spam, spammer, comment, comments, comment-spam, antispam, anti-spam, block-spam, spam-free, spambot, spam-bot, bot
 Requires at least: 3.3
 Tested up to: 5.4
-Stable tag: 6.0
+Stable tag: 6.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
 
@@ -81,6 +81,10 @@ If the spammer will fill this trap-field with anything - the comment will be blo
 
 
 == Changelog ==
+
+= 6.1 - 2020-04-22 =
+* Security improvements
+* Hide antispam version from HTML
 
 = 6.0 - 2020-04-20 =
 * New maintainer kudlav - updated links and docs
