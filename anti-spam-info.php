@@ -54,7 +54,7 @@ function antispamrel_display_screen_option() {
 		</form>
 		<script>
 			document.onreadystatechange = function () {
-				if (document.readyState == "complete") {
+				if (document.readyState === "complete") {
 					const antspmrl_advsett = document.getElementById('screen-options-wrap');
 					const antspmrl_advopts = document.getElementById('antispamrel_screen_options_group');
 					antspmrl_advsett.appendChild(antspmrl_advopts);
