@@ -2,24 +2,26 @@
 Anti-spam Reloaded plugin
 */
 
-"use strict";
+'use strict';
 (function() {
 	function anti_spam_reloaded_init() {
 
-		let answer = '';
-
+		// hide inputs from users
 		let elements = document.querySelectorAll('.antispamrel-group');
-		for (let i = 0; i < elements.length; i++) { // hide inputs from users
+		for (let i = 0; i < elements.length; i++) {
 			elements[i].style.display = 'none';
 		}
 
-		elements = document.querySelectorAll('.antispamrel-control-a');
-		if ((elements) && (elements.length > 0)) { // get the answer
-			answer = elements[0].value;
+		// get the answer
+		let answer = '';
+		const controlA = document.querySelector('.antispamrel-control-a');
+		if (controlA !== null) {
+			answer = controlA.value;
 		}
 
+		// set answer into other input instead of user
 		elements = document.querySelectorAll('.antispamrel-control-q');
-		for (let i = 0; i < elements.length; i++) { // set answer into other input instead of user
+		for (let i = 0; i < elements.length; i++) {
 			elements[i].value = answer;
 		}
 
@@ -34,14 +36,14 @@ Anti-spam Reloaded plugin
 		dynamic_control.setAttribute('type', 'hidden');
 		dynamic_control.setAttribute('name', 'antspmrl-d');
 		dynamic_control.setAttribute('class', 'antispamrel-control-d');
-		dynamic_control.setAttribute('value', new Date().getFullYear());
+		dynamic_control.setAttribute('value', new Date().getFullYear().toString());
 
 		// add input for every comment form if there are more than 1 form with IDs: comments, respond or commentform
 		elements = document.querySelectorAll('form');
 		for (let i = 0; i < elements.length; i++) {
 			if ( (elements[i].id === 'comments') || (elements[i].id === 'respond') || (elements[i].id === 'commentform') ) {
 				let class_index = elements[i].className.indexOf('anti-spam-reloaded-form-processed');
-				if ( class_index == -1 ) { // form is not yet js processed
+				if ( class_index === -1 ) { // form is not yet js processed
 					elements[i].appendChild(dynamic_control);
 					elements[i].className = elements[i].className + ' anti-spam-reloaded-form-processed';
 				}

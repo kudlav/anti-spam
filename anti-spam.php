@@ -14,6 +14,8 @@ if ( ! defined( 'ABSPATH' ) ) { // Avoid direct calls to this file and prevent f
 	exit;
 }
 
+define('ANTISPAMREL_PLUGIN_VERSION', '6.1');
+
 include('anti-spam-functions.php');
 include('anti-spam-settings.php');
 include('anti-spam-info.php');
@@ -22,7 +24,13 @@ include('anti-spam-info.php');
 function antispamrel_enqueue_script() {
 	global $withcomments; // WP flag to show comments on all pages
 	if ((is_singular() || $withcomments) && comments_open()) { // load script only for pages with comments form
-		wp_enqueue_script('anti-spam-reloaded-script', plugins_url('/js/anti-spam-6.1.js', __FILE__), null, null, true);
+		wp_enqueue_script(
+			'anti-spam-reloaded-script',
+			plugins_url('/js/anti-spam.min.js', __FILE__),
+			null,
+			ANTISPAMREL_PLUGIN_VERSION,
+			true
+		);
 	}
 }
 add_action('wp_enqueue_scripts', 'antispamrel_enqueue_script');
