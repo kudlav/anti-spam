@@ -46,7 +46,7 @@ function antispamrel_form_part() {
 				<input type="text" name="antspmrl-q" class="antispamrel-control-q" value="', rand(0, 99), '" autocomplete="off" />
 			</p>
 			<p class="antispamrel-group" style="display: none;">
-				<label>Leave this field empty</label>
+				<label>'. __('Leave this field empty', 'anti-spam-reloaded') .'</label>
 				<input type="text" name="antspmrl-e-email-url-website" class="antispamrel-control-e" value="" autocomplete="off" />
 			</p>
 		'; // empty field (hidden with css); trap for spammers because many bots will try to put email or url here
@@ -58,24 +58,23 @@ add_action('comment_form', 'antispamrel_form_part'); // add anti-spam inputs to 
 function antispamrel_check_comment($commentdata) {
 	$antispam_settings = antispamrel_get_settings();
 
-	extract($commentdata);
+	$flag = null;
 
-	if ( ! is_user_logged_in() && $comment_type != 'pingback' && $comment_type != 'trackback') { // logged in user is not a spammer
-		if( antispamrel_check_for_spam() ) {
-			if( $antispam_settings['save_spam_comments'] ) {
-				antispamrel_store_comment($commentdata);
-			}
-			antispamrel_counter_stats();
-			wp_die('Comment is a spam.'); // die - do not send comment and show error message
-		}
+	switch ($commentdata['comment_type']) {
+		case '': // comment
+			if(!is_user_logged_in() && antispamrel_check_for_spam()) // logged in user is not a spammer
+				$flag = 'Comment is a spam.';
+			break;
+		case 'trackback':
+			$flag = 'Trackbacks are disabled.';
 	}
 
-	if ($comment_type == 'trackback') {
+	if ($flag !== null) {
 		if( $antispam_settings['save_spam_comments'] ) {
 			antispamrel_store_comment($commentdata);
 		}
 		antispamrel_counter_stats();
-		wp_die('Trackbacks are disabled.'); // die - do not send trackback and show error message
+		wp_die($flag); // die - do not send comment and show error message
 	}
 
 	return $commentdata; // if comment does not looks like spam
