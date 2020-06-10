@@ -86,7 +86,7 @@ function antispamrel_store_comment($commentdata) {
 
 	$commentdata = wp_filter_comment($commentdata);
 
-	$commentdata['comment_approved'] = wp_allow_comment( $commentdata, $avoid_die );
+	$commentdata['comment_approved'] = wp_allow_comment( $commentdata, true );
 	if ( is_wp_error( $commentdata['comment_approved'] ) ) {
 		return false;
 	}
@@ -103,7 +103,7 @@ function antispamrel_store_comment($commentdata) {
 
 		$commentdata = wp_filter_comment( $commentdata );
 
-		$commentdata['comment_approved'] = wp_allow_comment( $commentdata, $avoid_die );
+		$commentdata['comment_approved'] = wp_allow_comment( $commentdata, true );
 		if ( is_wp_error( $commentdata['comment_approved'] ) ) {
 			return false;
 		}
