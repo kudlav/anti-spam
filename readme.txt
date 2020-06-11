@@ -88,7 +88,7 @@ If the spammer will fill this trap-field with anything - the comment will be blo
 
 == Changelog ==
 
-= 6.2 - 2020-06-12
+= 6.2 - 2020-06-12 =
 * Internationalize plugin
 * Czech translation
 * Minify JS file, use wp_enqueue versioning
