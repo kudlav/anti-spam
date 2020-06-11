@@ -3,7 +3,7 @@ Contributors: kudlav, webvitaly
 Tags: spam, spammer, comment, comments, comment-spam, antispam, anti-spam, block-spam, spam-free, spambot, spam-bot, bot
 Requires at least: 3.3
 Tested up to: 5.4
-Stable tag: 6.1
+Stable tag: 6.2
 Requires PHP: 5.6
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
@@ -87,6 +87,13 @@ If the spammer will fill this trap-field with anything - the comment will be blo
 3. Spam comments will not be proceeded.
 
 == Changelog ==
+
+= 6.2 - 2020-06-12
+* Internationalize plugin
+* Czech translation
+* Minify JS file, use wp_enqueue versioning
+* Dont use extract() in antispamrel_check_comment
+* Fix undefined variables
 
 = 6.1 - 2020-04-22 =
 * Security improvements
