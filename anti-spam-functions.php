@@ -32,8 +32,8 @@ function antispamrel_counter_stats() {
 function antispamrel_check_for_spam() {
 	$spam_flag = false;
 
-	if ( !isset($_POST['antspmrl-q']) || trim($_POST['antspmrl-q']) != date('Y') ) { // year-answer is wrong - it is spam
-		if ( !isset($_POST['antspmrl-d']) || trim($_POST['antspmrl-d']) != date('Y') ) { // extra js-only check: there is no js added input - it is spam
+	if ( !isset($_POST['antspmrl-q']) || trim($_POST['antspmrl-q']) != date('Y') ) { // year-answer is wrong -> spam
+		if ( !isset($_POST['antspmrl-d']) || trim($_POST['antspmrl-d']) != date('Y') ) { // extra js-only check: no js added input -> spam
 			$spam_flag = true;
 		}
 	}
