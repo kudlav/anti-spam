@@ -16,15 +16,22 @@ function antispamrel_admin_notice() {
 			$blocked_total = 0; // show 0 by default
 			$antispam_stats = get_option('antispamrel_stats', array());
 			if (isset($antispam_stats['blocked_total'])) {
-				$blocked_total = esc_html($antispam_stats['blocked_total']);
+				$blocked_total = $antispam_stats['blocked_total'];
 			}
-			?>
-			<div class="notice notice-info">
-				<p>
-					<?php echo $blocked_total; ?> spam comments were blocked by <a href="http://wordpress.org/plugins/anti-spam-reloaded/">Anti-spam Reloaded</a> plugin so far.
-				</p>
-			</div>
-			<?php
+
+			esc_html(printf(
+				'<div class="notice notice-info"><p>' .
+				/* translators: 1: number of blocked comments, 2: plugin name. */
+				_n(
+					'%1$s spam comment was blocked by %2$s plugin so far',
+					'%1$s spam comments were blocked by %2$s plugin so far',
+					$blocked_total,
+					'anti-spam-reloaded'
+				) .
+				'</p></div>',
+				number_format_i18n($blocked_total),
+				'<a href="https://wordpress.org/plugins/anti-spam-reloaded" target="_blank" rel="noreferrer">Anti-spam Reloaded</a>'
+			));
 		}
 	}
 }
@@ -40,28 +47,28 @@ function antispamrel_display_screen_option() {
 		$checked = checked(($antispam_info_visibility == 1 || $antispam_info_visibility == ''), true, false);
 		$nonce = esc_textarea(wp_create_nonce('antispamrel_info_nonce'));
 
-		?>
-		<form method="post" id="antispamrel_screen_options_group">
-			<fieldset>
-				<legend>Anti-spam Reloaded</legend>
-				<input type="hidden" name="antispamrel_info_nonce" value="<?php echo $nonce; ?>" />
-				<label>
-					<input name="antispamrel_info_visibility" type="checkbox" value="1" <?php echo $checked; ?> />
-					Show number of blocked comments
-				</label>
-				<input type="submit" class="button" value="<?php _e('Apply'); ?>" />
-			</fieldset>
-		</form>
-		<script>
-			document.onreadystatechange = function () {
-				if (document.readyState === "complete") {
-					const antspmrl_advsett = document.getElementById('screen-options-wrap');
-					const antspmrl_advopts = document.getElementById('antispamrel_screen_options_group');
-					antspmrl_advsett.appendChild(antspmrl_advopts);
+		echo '
+			<form method="post" id="antispamrel_screen_options_group">
+				<fieldset>
+					<legend>Anti-spam Reloaded</legend>
+					<input type="hidden" name="antispamrel_info_nonce" value="', $nonce, '" />
+					<label>
+						<input name="antispamrel_info_visibility" type="checkbox" value="1" ', $checked, ' />
+						', esc_html__('Show number of blocked comments', 'anti-spam-reloaded'), '
+					</label>
+					<input type="submit" class="button" value="', esc_attr__('Apply', 'anti-spam-reloaded'), '" />
+				</fieldset>
+			</form>
+			<script>
+				document.onreadystatechange = function () {
+					if (document.readyState === "complete") {
+						const antspmrl_advsett = document.getElementById(\'screen-options-wrap\');
+						const antspmrl_advopts = document.getElementById(\'antispamrel_screen_options_group\');
+						antspmrl_advsett.appendChild(antspmrl_advopts);
+					}
 				}
-			}
-		</script>
-		<?php
+			</script>
+		';
 	}
 }
 

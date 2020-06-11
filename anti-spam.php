@@ -20,6 +20,10 @@ include('anti-spam-functions.php');
 include('anti-spam-settings.php');
 include('anti-spam-info.php');
 
+function antispamrel_load_plugin_textdomain() {
+	load_plugin_textdomain('anti-spam-reloaded', false, basename(dirname(__FILE__)) . '/languages/');
+}
+add_action('plugins_loaded', 'antispamrel_load_plugin_textdomain');
 
 function antispamrel_enqueue_script() {
 	global $withcomments; // WP flag to show comments on all pages
@@ -38,18 +42,22 @@ add_action('wp_enqueue_scripts', 'antispamrel_enqueue_script');
 
 function antispamrel_form_part() {
 	if ( ! is_user_logged_in()) { // add anti-spam fields only for not logged in users
-		echo '
+		printf( '
 			<!-- Anti-spam Reloaded plugin wordpress.org/plugins/anti-spam-reloaded/ -->
 			<p class="antispamrel-group" style="clear: both;">
-				<label>Current ye@r <span class="required">*</span></label>
-				<input type="hidden" name="antspmrl-a" class="antispamrel-control-a" value="', date('Y'), '" />
-				<input type="text" name="antspmrl-q" class="antispamrel-control-q" value="', rand(0, 99), '" autocomplete="off" />
+				<label>' . /*translators:1:invisible text will be inserted here*/
+		            esc_html__('Current ye%s@r', 'anti-spam-reloaded') .
+		            '<span class="required">*</span>
+				</label>
+				<input type="hidden" name="antspmrl-a" class="antispamrel-control-a" value="' . date('Y') . '" />
+				<input type="text" name="antspmrl-q" class="antispamrel-control-q" value="' . rand(0, 99) . '" autocomplete="off" />
 			</p>
 			<p class="antispamrel-group" style="display: none;">
-				<label>'. __('Leave this field empty', 'anti-spam-reloaded') .'</label>
+				<label>' . esc_html__('Leave this field empty', 'anti-spam-reloaded') . '</label>
 				<input type="text" name="antspmrl-e-email-url-website" class="antispamrel-control-e" value="" autocomplete="off" />
 			</p>
-		'; // empty field (hidden with css); trap for spammers because many bots will try to put email or url here
+		', '<span style="display: none;">ignore me</span>');
+		// empty field (hidden with css): trap for spammers because many bots will try to put email or url here
 	}
 }
 add_action('comment_form', 'antispamrel_form_part'); // add anti-spam inputs to the comment form
@@ -63,10 +71,10 @@ function antispamrel_check_comment($commentdata) {
 	switch ($commentdata['comment_type']) {
 		case '': // comment
 			if(!is_user_logged_in() && antispamrel_check_for_spam()) // logged in user is not a spammer
-				$flag = 'Comment is a spam.';
+				$flag = __('Comment is a spam.', 'anti-spam-reloaded');
 			break;
 		case 'trackback':
-			$flag = 'Trackbacks are disabled.';
+			$flag = __('Trackbacks are disabled.', 'anti-spam-reloaded');
 	}
 
 	if ($flag !== null) {
@@ -87,7 +95,7 @@ if ( ! is_admin()) { // without this check it is not possible to add comment in 
 function antispamrel_plugin_meta($links, $file) { // add some links to plugin meta row
 	if ( $file == plugin_basename( __FILE__ ) ) {
 		$row_meta = array(
-			'github' => '<a href="https://github.com/kudlav/anti-spam/" target="_blank" rel="noreferrer">' . __( 'Github', 'github' ) . '</a>'
+			'github' => '<a href="https://github.com/kudlav/anti-spam/" target="_blank" rel="noreferrer">GitHub</a>'
 		);
 		$links = array_merge( $links, $row_meta );
 	}

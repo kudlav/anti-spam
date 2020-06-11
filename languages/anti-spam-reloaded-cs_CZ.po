@@ -1,0 +1,80 @@
+# Translation of Plugins - Anti-spam Reloaded - Development (trunk) in Czech
+# This file is distributed under the same license as the Plugins - Anti-spam Reloaded - Development (trunk) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: +0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n == 1) ? 0 : ((n >= 2 && n <= 4) ? 1 : 2);\n"
+"X-Generator: GlotPress/3.0.0-alpha\n"
+"Language: cs_CZ\n"
+"Project-Id-Version: Plugins - Anti-spam Reloaded - Development (trunk)\n"
+
+#: anti-spam-info.php:59
+msgid "Apply"
+msgstr "Použít"
+
+#: anti-spam-info.php:57
+msgid "Show number of blocked comments"
+msgstr "Zobrazit počet zablokovaných komentářů"
+
+#. translators: 1: number of blocked comments, 2: plugin name.
+#: anti-spam-settings.php:71 anti-spam-info.php:25
+msgid "%1$s spam comment was blocked by %2$s plugin so far"
+msgid_plural "%1$s spam comments were blocked by %2$s plugin so far"
+msgstr[0] "%1$s komentář byl dosud zablokován pluginem %2$s"
+msgstr[1] "%1$s komentáře byl dosud zablokovány pluginem %2$s"
+msgstr[2] "%1$s komentářů bylo dosud zablokováno pluginem %2$s"
+
+#: anti-spam-settings.php:50
+msgid "View spam section"
+msgstr "Přejít na sekci Spam"
+
+#: anti-spam-settings.php:48
+msgid "Useful for testing how the plugin works"
+msgstr "Užitečné pro vyzkoušení, jak plugin funguje"
+
+#: anti-spam-settings.php:46
+msgid "Save spam comments into spam section"
+msgstr "Uložit zablokované komentáře do sekce Spam"
+
+#: anti-spam-settings.php:23
+msgid "Save spam comments"
+msgstr "Uložit zablokované komentáře"
+
+#: anti-spam.php:74
+msgid "Trackbacks are disabled."
+msgstr "Trackbacky jsou zakázané."
+
+#: anti-spam.php:71
+msgid "Comment is a spam."
+msgstr "Komentář je spam."
+
+#: anti-spam.php:53
+msgid "Leave this field empty"
+msgstr "Ponechte toto pole prázdné"
+
+#: anti-spam.php:48
+msgid "Current ye%s@r"
+msgstr "Aktuální ro%sk"
+
+#. Author URI of the plugin
+msgid "https://kudlav.github.io/"
+msgstr "https://kudlav.github.io/"
+
+#. Author of the plugin
+msgid "kudlav, webvitaly"
+msgstr "kudlav, webvitaly"
+
+#. Description of the plugin
+msgid "No spam in comments. No captcha."
+msgstr "Žádný spam v komentářích. Žádná captcha."
+
+#. Plugin URI of the plugin
+msgid "http://wordpress.org/plugins/anti-spam-reloaded/"
+msgstr "https://cs.wordpress.org/plugins/anti-spam-reloaded/"
+
+#. Plugin Name of the plugin
+msgid "Anti-spam Reloaded"
+msgstr "Anti-spam Reloaded"
