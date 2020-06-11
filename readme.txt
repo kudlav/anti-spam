@@ -4,6 +4,7 @@ Tags: spam, spammer, comment, comments, comment-spam, antispam, anti-spam, block
 Requires at least: 3.3
 Tested up to: 5.4
 Stable tag: 6.1
+Requires PHP: 5.6
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
 
@@ -14,7 +15,7 @@ No spam in comments. No captcha.
 This is fork of successful Anti-spam plugin v5.5 written by webvitalii, for more info visit [GitHub Fork](https://github.com/kudlav/anti-spam/).
 From version 5.6 maintained by kudlav.
 
-* **[GitHub Fork](https://github.com/kudlav/anti-spam/)**
+* **[GitHub](https://github.com/kudlav/anti-spam/)**
 
 Anti-spam Reloaded plugin blocks 100% of automatic spam messages in comments section and also blocks all trackbacks. No captcha required.
 
@@ -79,6 +80,11 @@ This field is hidden for the user and user will not fill it.
 But this field is visible for the spammer.
 If the spammer will fill this trap-field with anything - the comment will be blocked because it is spam.
 
+== Screenshots ==
+
+1. Plugin will count number of blocked comments, blocked comments can be saved.
+2. Plugin settings page
+3. Spam comments will not be proceeded.
 
 == Changelog ==
 
