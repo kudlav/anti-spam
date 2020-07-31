@@ -51,13 +51,6 @@ Anti-spam Reloaded plugin
 		}
 	}
 
-	if (document.addEventListener) {
-		document.addEventListener('DOMContentLoaded', anti_spam_reloaded_init, false);
-	}
-
-	// set 1 second timeout for having form loaded and adding support for browsers which does not support 'DOMContentLoaded' listener
-	setTimeout(function () {
-		anti_spam_reloaded_init();
-	}, 1000);
+	window.addEventListener('DOMContentLoaded', anti_spam_reloaded_init, false);
 
 })();
