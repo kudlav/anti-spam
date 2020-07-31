@@ -69,7 +69,8 @@ function antispamrel_check_comment($commentdata) {
 	$flag = null;
 
 	switch ($commentdata['comment_type']) {
-		case '': // comment
+		case '': // legacy comment WP<5.5
+		case 'comment':
 			if(!is_user_logged_in() && antispamrel_check_for_spam()) // logged in user is not a spammer
 				$flag = __('Comment is a spam.', 'anti-spam-reloaded');
 			break;
