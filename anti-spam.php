@@ -3,7 +3,7 @@
 Plugin Name: Anti-spam Reloaded
 Plugin URI: http://wordpress.org/plugins/anti-spam-reloaded/
 Description: No spam in comments. No captcha.
-Version: 6.2
+Version: 6.3
 Author: kudlav, webvitaly
 Text Domain: anti-spam-reloaded
 Author URI: https://kudlav.github.io/
@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) { // Avoid direct calls to this file and prevent f
 	exit;
 }
 
-define('ANTISPAMREL_PLUGIN_VERSION', '6.2');
+define('ANTISPAMREL_PLUGIN_VERSION', '6.3');
 
 include('anti-spam-functions.php');
 include('anti-spam-settings.php');

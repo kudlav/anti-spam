@@ -2,8 +2,8 @@
 Contributors: kudlav, webvitaly
 Tags: spam, spammer, comment, comments, comment-spam, antispam, anti-spam, block-spam, spam-free, spambot, spam-bot, bot
 Requires at least: 3.3
-Tested up to: 5.4
-Stable tag: 6.2
+Tested up to: 5.5
+Stable tag: 6.3
 Requires PHP: 5.6
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
@@ -87,6 +87,10 @@ If the spammer will fill this trap-field with anything - the comment will be blo
 3. Spam comments will not be proceeded.
 
 == Changelog ==
+
+= 6.3 - 2020-07-31
+* Compatibility with WordPress 5.5 (Use `comment` or empty string for the `comment_type`)
+* Use only DOMContentLoaded listener for autofill and auto-hide (affect 1% of browsers)
 
 = 6.2 - 2020-06-12 =
 * Internationalize plugin
