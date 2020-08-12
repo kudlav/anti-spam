@@ -51,6 +51,6 @@ Anti-spam Reloaded plugin
 		}
 	}
 
-	window.addEventListener('DOMContentLoaded', anti_spam_reloaded_init, false);
+	document.addEventListener('DOMContentLoaded', anti_spam_reloaded_init, false);
 
 })();
