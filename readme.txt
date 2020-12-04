@@ -2,7 +2,7 @@
 Contributors: kudlav, webvitaly
 Tags: spam, spammer, comment, comments, comment-spam, antispam, anti-spam, block-spam, spam-free, spambot, spam-bot, bot
 Requires at least: 3.3
-Tested up to: 5.5
+Tested up to: 5.6
 Stable tag: 6.4
 Requires PHP: 5.6
 License: GPLv3
@@ -50,7 +50,14 @@ The visibility option for this info block is saved per user (enabled by default)
 All modern browsers and IE11+ are supported.
 Anti-spam Reloaded plugin works with disabled JavaScript. Users with disabled JavaScript should manually fill current year before submitting the comment.
 
+Server compatibility:
+
+* Wordpress 3.3 - 5.6
+* PHP 5.6 - 8.0
+* Doesn't use jQuery
+
 Plugin is incompatible with:
+
 * Disqus
 * Jetpack Comments
 * AJAX Comment Form
