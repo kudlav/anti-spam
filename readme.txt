@@ -2,7 +2,7 @@
 Contributors: kudlav, webvitaly
 Tags: spam, spammer, comment, comments, comment-spam, antispam, anti-spam, block-spam, spam-free, spambot, spam-bot, bot
 Requires at least: 3.3
-Tested up to: 5.6
+Tested up to: 5.7
 Stable tag: 6.4
 Requires PHP: 5.6
 License: GPLv3
