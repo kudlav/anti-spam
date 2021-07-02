@@ -3,7 +3,7 @@
 Plugin Name: Anti-spam Reloaded
 Plugin URI: http://wordpress.org/plugins/anti-spam-reloaded/
 Description: No spam in comments. No captcha.
-Version: 6.4
+Version: 6.5
 Author: kudlav, webvitaly
 Text Domain: anti-spam-reloaded
 Author URI: https://kudlav.github.io/
@@ -46,11 +46,11 @@ function antispamrel_form_part() {
 			<!-- Anti-spam Reloaded plugin wordpress.org/plugins/anti-spam-reloaded/ -->
 			<p class="antispamrel-group" style="clear: both;">
 				<label>' . /*translators:1:invisible text will be inserted here*/
-		            esc_html__('Current ye%s@r', 'anti-spam-reloaded') .
-		            '<span class="required">*</span>
+					esc_html__('Current ye%s@r', 'anti-spam-reloaded') .
+					'<span class="required">*</span>
+					<input type="text" name="antspmrl-q" class="antispamrel-control-q" value="' . rand(0, 99) . '" autocomplete="off" />
 				</label>
 				<input type="hidden" name="antspmrl-a" class="antispamrel-control-a" value="' . date('Y') . '" />
-				<input type="text" name="antspmrl-q" class="antispamrel-control-q" value="' . rand(0, 99) . '" autocomplete="off" />
 			</p>
 			<p class="antispamrel-group" style="display: none;">
 				<label>' . esc_html__('Leave this field empty', 'anti-spam-reloaded') . '</label>

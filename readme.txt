@@ -3,7 +3,7 @@ Contributors: kudlav, webvitaly
 Tags: spam, spammer, comment, comments, comment-spam, antispam, anti-spam, block-spam, spam-free, spambot, spam-bot, bot
 Requires at least: 3.3
 Tested up to: 5.7
-Stable tag: 6.4
+Stable tag: 6.5
 Requires PHP: 5.6
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
@@ -52,7 +52,7 @@ Anti-spam Reloaded plugin works with disabled JavaScript. Users with disabled Ja
 
 Server compatibility:
 
-* Wordpress 3.3 - 5.6
+* Wordpress 3.3 - 5.7
 * PHP 5.6 - 8.0
 * Doesn't use jQuery
 
@@ -94,6 +94,9 @@ If the spammer will fill this trap-field with anything - the comment will be blo
 3. Spam comments will not be proceeded.
 
 == Changelog ==
+
+= 6.5 - 2021-07-02 =
+* Improve accessibility - assign label to the year input
 
 = 6.4 - 2020-08-12 =
 * Bugfix: JavaScript wasn't on some pages invoked (use DOMContentLoaded listener on document again)
