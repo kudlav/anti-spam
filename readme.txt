@@ -2,7 +2,7 @@
 Contributors: kudlav, webvitaly
 Tags: spam, spammer, comment, comments, comment-spam, antispam, anti-spam, block-spam, spam-free, spambot, spam-bot, bot
 Requires at least: 3.3
-Tested up to: 5.7
+Tested up to: 5.8
 Stable tag: 6.5
 Requires PHP: 5.6
 License: GPLv3
@@ -52,7 +52,7 @@ Anti-spam Reloaded plugin works with disabled JavaScript. Users with disabled Ja
 
 Server compatibility:
 
-* Wordpress 3.3 - 5.7
+* Wordpress 3.3 - 5.8
 * PHP 5.6 - 8.0
 * Doesn't use jQuery
 
