@@ -2,7 +2,7 @@
 Contributors: kudlav, webvitaly
 Tags: spam, spammer, comment, comments, comment-spam, antispam, anti-spam, block-spam, spam-free, spambot, spam-bot, bot
 Requires at least: 3.3
-Tested up to: 5.9
+Tested up to: 6.4
 Stable tag: 6.5
 Requires PHP: 5.6
 License: GPLv3
@@ -17,7 +17,7 @@ From version 5.6 maintained by kudlav.
 
 * **[GitHub](https://github.com/kudlav/anti-spam/)**
 
-Anti-spam Reloaded plugin blocks 100% of automatic spam messages in comments section and also blocks all trackbacks. No captcha required.
+Anti-spam Reloaded plugin blocks 100% of automatic spam messages in comments section and also blocks all trackbacks.No captcha required.
 
 Plugin is simple and easy to use: just install it and it just works.
 
@@ -52,8 +52,8 @@ Anti-spam Reloaded plugin works with disabled JavaScript. Users with disabled Ja
 
 Server compatibility:
 
-* Wordpress 3.3 - 5.9
-* PHP 5.6 - 8.1
+* Wordpress 3.3 - 6.4
+* PHP 5.6 - 8.2
 * Doesn't use jQuery
 
 Plugin is incompatible with:
