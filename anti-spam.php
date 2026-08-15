@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) { // Avoid direct calls to this file and prevent f
 	exit;
 }
 
-define('ANTISPAMREL_PLUGIN_VERSION', '6.4');
+define('ANTISPAMREL_PLUGIN_VERSION', '6.5');
 
 include('anti-spam-functions.php');
 include('anti-spam-settings.php');
