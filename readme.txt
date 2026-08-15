@@ -1,6 +1,6 @@
 === Anti-spam Reloaded ===
 Contributors: kudlav, webvitaly
-Tags: spam, spammer, comment, comments, comment-spam, antispam, anti-spam, block-spam, spam-free, spambot, spam-bot, bot
+Tags: anti-spam, antispam, captcha, comments, spam
 Requires at least: 3.3
 Tested up to: 7.0
 Stable tag: 6.5
